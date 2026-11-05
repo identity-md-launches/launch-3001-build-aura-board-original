@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import { readFile, readdir, stat } from 'node:fs/promises';
+import { nnls } from './nnls.mjs';
+const near=(a,b,t=1e-3)=>assert.ok(Math.abs(a-b)<t,`${a} != ${b}`);
+const a=nnls([[1,0],[0,1],[1,1]],[10,20,30]);near(a.weights[0],10);near(a.weights[1],20);assert.ok(a.converged);
+const b=nnls([[1,0],[0,1]],[10,-5]);near(b.weights[0],10);near(b.weights[1],0);
+const c=nnls([[1,1,0],[1,1,0],[0,0,0]],[12,12,0]);near(c.weights[0],6);near(c.weights[1],6);near(c.weights[2],0);
+assert.deepEqual(a.weights,nnls([[1,0],[0,1],[1,1]],[10,20,30]).weights);
+const model=JSON.parse(await readFile('src/aura-model.json','utf8'));
+assert.ok(model.converged && model.sampleSize>0 && model.kkt<model.tolerance);
+assert.ok(Object.values(model.coefficients).every(c=>c.value===null || (Number.isFinite(c.value)&&c.value>=0)));
+const html=await readFile('dist/index.html','utf8');
+for(const term of ['<title>','name="description"','property="og:title"','property="og:image"','rel="icon"'])assert.ok(html.includes(term),`Missing ${term}`);
+for(const [,url] of html.matchAll(/(?:src|href|content)="(\.\/[^"#]+)"/g))assert.ok((await stat('dist/'+url.slice(2))).isFile(),`Missing ${url}`);
+assert.ok(!/src="\/assets|href="\/assets/.test(html),'Absolute asset URL');
+let bytes=0;async function count(path){for(const d of await readdir(path,{withFileTypes:true})){const p=path+'/'+d.name;if(d.isDirectory())await count(p);else bytes+=(await stat(p)).size;}}await count('dist');
+assert.ok(bytes<1_000_000,`Unexpected export size ${bytes}`);
+console.log('PASS: NNLS recovery, non-negative boundary, inseparable/unobserved columns, deterministic output, model KKT, metadata, relative assets, complete export ('+bytes+' bytes).');

@@ -1,0 +1,24 @@
+{
+  "name": "aura-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A read-only Genesis badge and aura tracker for the Squeekchain community.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "fit": "node scripts/fit-estimates.mjs",
+    "test": "node scripts/check.mjs",
+    "test:browser": "node scripts/check-browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.6"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

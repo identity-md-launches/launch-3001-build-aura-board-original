@@ -1,0 +1,10 @@
+# Path budget: generated dependencies/caches at every depth; scratch is never delivered.
+# dist/ is intentionally included. Source, lockfile, estimates and runtime assets are included.
+**/node_modules/
+**/.npm/
+**/.vite/
+**/.cache/
+**/playwright-report/
+**/test-results/
+test/scratch/
+*.tsbuildinfo
