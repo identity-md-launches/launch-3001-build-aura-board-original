@@ -1,0 +1,24 @@
+{
+  "scope": "Entire Git candidate tree, excluding deleted files, assignment inputs and scratch; includes this record; conservative upper bound on additions",
+  "fileCount": 44,
+  "totalBytes": 1144537,
+  "limitBytes": 8388608,
+  "artifactBytes": 238785,
+  "artifactLimitBytes": 524288,
+  "groups": {
+    ".imd-responses.json": 6677,
+    "artifacts": 238785,
+    "dist": 397509,
+    ".gitignore": 530,
+    "DESIGN.md": 11305,
+    "README.md": 12951,
+    "index.html": 2778,
+    "package-lock.json": 26887,
+    "package.json": 609,
+    "public": 315014,
+    "scripts": 34276,
+    "src": 96707,
+    "tsconfig.json": 338,
+    "vite.config.mjs": 171
+  }
+}

@@ -8,3 +8,8 @@
 **/test-results/
 test/scratch/
 *.tsbuildinfo
+# Explicit delivery budget: required evidence <= 512 KiB; finding responses <= 32 KiB.
+# These must be included even when the contributor's global excludes hide artifacts/dotfiles.
+!/artifacts/
+!/artifacts/**
+!/.imd-responses.json

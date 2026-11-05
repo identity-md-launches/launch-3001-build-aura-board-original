@@ -9,10 +9,24 @@ assert.deepEqual(a.weights,nnls([[1,0],[0,1],[1,1]],[10,20,30]).weights);
 const model=JSON.parse(await readFile('src/aura-model.json','utf8'));
 assert.ok(model.converged && model.sampleSize>0 && model.kkt<model.tolerance);
 assert.ok(Object.values(model.coefficients).every(c=>c.value===null || (Number.isFinite(c.value)&&c.value>=0)));
+const { ids, gram, cross, ySquared, ...recordMetadata }=JSON.parse(await readFile('artifacts/fit-record.json','utf8'));
+assert.deepEqual(recordMetadata,model,'Fit record must describe the shipped model');
+assert.equal(ids.length,model.features);assert.equal(gram.length,ids.length);assert.equal(cross.length,ids.length);
+const weights=ids.map(id=>model.coefficients[id].value??0);
+let quadratic=0,linear=0,kkt=0;
+for(let j=0;j<ids.length;j++){
+  assert.equal(gram[j].length,ids.length);
+  const product=gram[j].reduce((sum,value,k)=>sum+value*weights[k],0);
+  quadratic+=weights[j]*product;linear+=weights[j]*cross[j];
+  const gradient=product-cross[j];kkt=Math.max(kkt,weights[j]>0?Math.abs(gradient):Math.max(0,-gradient));
+}
+near(Math.sqrt(Math.max(0,quadratic-2*linear+ySquared)/model.sampleSize),model.rmse);
+assert.ok(kkt<model.tolerance,'Aggregate record must independently satisfy NNLS KKT tolerance');
+for(const path of ['api-audit.md','validation.md','design-guidance-LICENSE.txt'])assert.ok((await stat('artifacts/'+path)).isFile(),`Missing evidence ${path}`);
 const html=await readFile('dist/index.html','utf8');
 for(const term of ['<title>','name="description"','property="og:title"','property="og:image"','rel="icon"'])assert.ok(html.includes(term),`Missing ${term}`);
 for(const [,url] of html.matchAll(/(?:src|href|content)="(\.\/[^"#]+)"/g))assert.ok((await stat('dist/'+url.slice(2))).isFile(),`Missing ${url}`);
 assert.ok(!/src="\/assets|href="\/assets/.test(html),'Absolute asset URL');
 let bytes=0;async function count(path){for(const d of await readdir(path,{withFileTypes:true})){const p=path+'/'+d.name;if(d.isDirectory())await count(p);else bytes+=(await stat(p)).size;}}await count('dist');
 assert.ok(bytes<1_000_000,`Unexpected export size ${bytes}`);
-console.log('PASS: NNLS recovery, non-negative boundary, inseparable/unobserved columns, deterministic output, model KKT, metadata, relative assets, complete export ('+bytes+' bytes).');
+console.log('PASS: NNLS recovery, non-negative boundary, inseparable/unobserved columns, deterministic output, model/aggregate-record consistency, aggregate RMSE/KKT, required evidence, metadata, relative assets, complete export ('+bytes+' bytes).');

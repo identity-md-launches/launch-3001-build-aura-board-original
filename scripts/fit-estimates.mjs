@@ -1,6 +1,6 @@
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { nnls } from './nnls.mjs';
 const exec = promisify(execFile);
@@ -57,6 +57,7 @@ const metadata = {
   sourceSnapshots, sampleHash, features:ids.length, iterations:fit.iterations, tolerance:1e-6, kkt:fit.kkt, converged:fit.converged, rmse:fit.rmse, mae:fit.mae,
   coefficients, limitations:['Non-random sample favors high-rank and recently active members.','Holder caps, referrals and community activation can cause aura not explained by additive badge indicators.','Identical or correlated badge columns cannot establish individual causal values.','Unobserved badges have no estimate; a fitted zero is not an official zero.','Estimates are a dated calibration, never live member data or a promise of extra aura.']
 };
+await mkdir('artifacts',{recursive:true});
 await writeFile('src/aura-model.json',JSON.stringify(metadata,null,2)+'\n');
 await writeFile('artifacts/fit-record.json',JSON.stringify({ ...metadata, ids, gram:fit.gram,cross:fit.cross,ySquared:y.reduce((a,v)=>a+v*v,0) },null,2)+'\n');
 console.log(JSON.stringify({ sampleSize:metadata.sampleSize,features:metadata.features,rmse:fit.rmse,mae:fit.mae,kkt:fit.kkt,iterations:fit.iterations,fittedAt:metadata.fittedAt },null,2));

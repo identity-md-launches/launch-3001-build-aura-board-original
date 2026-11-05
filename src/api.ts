@@ -2,7 +2,7 @@ import { SchemaError } from './schema';
 export const COMMUNITY = 'https://community.squeekchain.com/v1/community';
 export const LAUNCH = 'https://api.squeekchain.com/v1/genesis-launch';
 export const CACHE_MS = 30_000;
-export const STALE_MS = 5 * 60_000;
+export const STALE_MS = 90 * 60_000;
 export interface Observation<T> { data?: T; observedAt?: number; sourceAt?: string; pending: boolean; error?: string; retryAt?: number; lastAttempt?: number }
 export interface Resource<T> { key: string; label: string; url: string; parse: (v: unknown) => T; state: Observation<T> }
 const resources = new Map<string, Resource<unknown>>();
@@ -33,6 +33,11 @@ export function freshness<T>(r: Resource<T>): string {
   if (isStale(s)) return 'Delayed source snapshot';
   return 'Recent API observation';
 }
+export function nextReadAt<T>(r: Resource<T>): number {
+  return Math.max((r.state.lastAttempt ?? 0) + CACHE_MS,
+    r.state.error ? 0 : (r.state.observedAt ?? 0) + CACHE_MS,
+    r.state.retryAt ?? 0, backoffs.get(new URL(r.url).origin)?.until ?? 0);
+}
 export async function load<T>(r: Resource<T>): Promise<void> {
   if (inflight.has(r.key)) return inflight.get(r.key);
   const now = Date.now(), origin = new URL(r.url).origin;
@@ -62,7 +67,7 @@ export async function load<T>(r: Resource<T>): Promise<void> {
       r.state.data = data; r.state.observedAt = Date.now(); r.state.sourceAt = sourceTime(data);
       r.state.error = undefined; r.state.retryAt = undefined; if ((backoffs.get(origin)?.until ?? 0) <= Date.now()) backoffs.delete(origin);
     } catch (error) {
-      r.state.error = error instanceof SchemaError ? error.message : error instanceof Error && error.name === 'AbortError' ? 'Official API timed out after 12 seconds. Loaded observations remain visible.' : error instanceof TypeError ? (r.key.startsWith('profile:') ? 'Browser cannot read this profile (network or CORS). CORS was restricted to the official site when verified on 2026-11-05.' : `${r.label} could not be read by the browser. Check the network connection and retry.`) : error instanceof Error ? error.message : 'Official API unavailable.';
+      r.state.error = error instanceof SchemaError ? error.message : error instanceof Error && error.name === 'AbortError' ? 'Official API timed out after 12 seconds. Loaded observations remain visible.' : error instanceof TypeError ? (r.key.startsWith('profile:') ? 'Browser cannot read this profile (network or CORS). Earned badges and movement are unavailable until a profile response can be read.' : `${r.label} could not be read by the browser. Check the network connection and retry.`) : error instanceof Error ? error.message : 'Official API unavailable.';
     } finally { clearTimeout(timeout); r.state.pending = false; inflight.delete(r.key); emit(); }
   })();
   inflight.set(r.key,task); return task;

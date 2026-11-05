@@ -2,42 +2,42 @@
   "schemaVersion": 1,
   "label": "Unofficial community-derived estimates",
   "method": "Non-negative least squares; accelerated projected gradient from zero; no intercept or regularization",
-  "startedAt": "2026-11-05T15:18:32.782Z",
-  "fittedAt": "2026-11-05T15:18:58.399Z",
+  "startedAt": "2026-11-05T16:27:52.004Z",
+  "fittedAt": "2026-11-05T16:28:22.265Z",
   "sampleSize": 132,
   "leaderboardProfiles": 100,
   "activityProfiles": 32,
   "sampleSelection": "Every published leaderboard entry plus up to 32 distinct recent activity member codes outside that board, sorted lexicographically. All profiles fetched once from the official API.",
   "sourceSnapshots": [
-    "2026-11-05T15:16:30.621Z"
+    "2026-11-05T16:27:25.670Z"
   ],
-  "sampleHash": "ed346ba08ff872cdf5e08838e938d5fe8e547eb75980e8e2573cd4ab2943bee2",
+  "sampleHash": "494ec79391c295b10b35980b9d853b632d314d5b98dbe4213b37821f39891ce5",
   "features": 32,
-  "iterations": 19492,
+  "iterations": 21358,
   "tolerance": 0.000001,
-  "kkt": 9.338700692751445e-7,
+  "kkt": 9.227223927155137e-7,
   "converged": true,
-  "rmse": 125.78046199111309,
-  "mae": 71.46857080052597,
+  "rmse": 127.23394220298471,
+  "mae": 67.3743953815383,
   "coefficients": {
     "clout.early_invitooor": {
-      "value": 861.9231486090863,
+      "value": 855.3541782374122,
       "support": 47,
       "inseparable": []
     },
     "clout.early_squeek": {
-      "value": 620.5386831167856,
+      "value": 569.5760543020453,
       "support": 58,
       "inseparable": []
     },
     "clout.exsqueektion_top25": {
-      "value": 53.30626461427852,
+      "value": 0,
       "support": 1,
       "inseparable": []
     },
     "clout.on_discord": {
-      "value": 93.80320511106156,
-      "support": 114,
+      "value": 55.43276264573335,
+      "support": 124,
       "inseparable": []
     },
     "clout.signed_up": {
@@ -46,57 +46,57 @@
       "inseparable": []
     },
     "clout.the_invitooor": {
-      "value": 343.0951496596205,
-      "support": 113,
+      "value": 337.1125940138841,
+      "support": 124,
       "inseparable": []
     },
     "clout.the_recruitooor": {
-      "value": 420.00617871634165,
-      "support": 97,
+      "value": 341.21260798081886,
+      "support": 95,
       "inseparable": []
     },
     "clout.the_ringleader": {
-      "value": 777.9474456126034,
-      "support": 51,
+      "value": 696.7757565946969,
+      "support": 52,
       "inseparable": []
     },
     "clout.the_squeekfather": {
-      "value": 552.2743390592133,
-      "support": 77,
+      "value": 630.7142792930981,
+      "support": 76,
       "inseparable": []
     },
     "code.early_buildooooor": {
-      "value": 1127.4138309696325,
+      "value": 1102.9528090095316,
       "support": 15,
       "inseparable": [
         "code.project_submitted"
       ]
     },
     "code.project_submitted": {
-      "value": 1127.4138309696325,
+      "value": 1102.9528090095316,
       "support": 15,
       "inseparable": [
         "code.early_buildooooor"
       ]
     },
     "code.the_tester": {
-      "value": 214.39111506538646,
-      "support": 106,
+      "value": 372.8344110036617,
+      "support": 94,
       "inseparable": []
     },
     "holder.1337_skulls": {
-      "value": 293.5850646127476,
+      "value": 291.58187026581726,
       "support": 4,
       "inseparable": []
     },
     "holder.abstract_chickens": {
-      "value": 220.00254188442437,
+      "value": 212.42313406940252,
       "support": 10,
       "inseparable": []
     },
     "holder.argonauts": {
-      "value": 270.3059987509676,
-      "support": 6,
+      "value": 241.941970049634,
+      "support": 5,
       "inseparable": []
     },
     "holder.bayc": {
@@ -110,29 +110,29 @@
       "inseparable": []
     },
     "holder.forever_fund": {
-      "value": 482.51884673400787,
+      "value": 458.13854991258927,
       "support": 27,
       "inseparable": []
     },
     "holder.fwa_staker": {
-      "value": 113.83258648926055,
+      "value": 126.18046972676137,
       "support": 1,
       "inseparable": [
         "holder.quotrons"
       ]
     },
     "holder.imd": {
-      "value": 148.13838649427592,
+      "value": 105.80227111401524,
       "support": 4,
       "inseparable": []
     },
     "holder.mayc": {
-      "value": 121.4779296734478,
+      "value": 117.79698569723764,
       "support": 3,
       "inseparable": []
     },
     "holder.meebits": {
-      "value": 70.90543398596652,
+      "value": 84.57473864882368,
       "support": 2,
       "inseparable": []
     },
@@ -142,17 +142,17 @@
       "inseparable": []
     },
     "holder.nakamigos": {
-      "value": 201.534053808978,
+      "value": 323.4262123587025,
       "support": 2,
       "inseparable": []
     },
     "holder.normies": {
-      "value": 150.82731833844653,
-      "support": 2,
+      "value": 140.4881310563154,
+      "support": 1,
       "inseparable": []
     },
     "holder.quotrons": {
-      "value": 113.83258648926055,
+      "value": 126.18046972676137,
       "support": 1,
       "inseparable": [
         "holder.fwa_staker"
@@ -169,7 +169,7 @@
       "inseparable": []
     },
     "holder.standard_reserve_charter": {
-      "value": 250.14852799854253,
+      "value": 289.33481692241406,
       "support": 6,
       "inseparable": []
     },
@@ -179,12 +179,12 @@
       "inseparable": []
     },
     "holder.tokenworks_s02": {
-      "value": 298.3028110151996,
+      "value": 396.2461164516272,
       "support": 3,
       "inseparable": []
     },
     "holder.yield_fields": {
-      "value": 184.43056129675833,
+      "value": 179.29005175694388,
       "support": 6,
       "inseparable": []
     },

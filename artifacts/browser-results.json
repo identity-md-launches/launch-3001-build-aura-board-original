@@ -1,0 +1,176 @@
+{
+  "startedAt": "2026-11-05T16:34:54.370Z",
+  "finishedAt": "2026-11-05T16:35:09.875Z",
+  "results": [
+    {
+      "name": "Independent-origin live catalog, stats and leaderboard",
+      "status": "passed",
+      "details": "real member jxghsp2j"
+    },
+    {
+      "name": "Live leaderboard paging",
+      "status": "passed",
+      "details": "20 rows per page; actual published top 100"
+    },
+    {
+      "name": "Live leaderboard code search",
+      "status": "passed",
+      "details": "filters actual published code"
+    },
+    {
+      "name": "Search empty state and clear",
+      "status": "passed",
+      "details": "returns to published page one"
+    },
+    {
+      "name": "Keyboard pager boundaries",
+      "status": "passed",
+      "details": "focus stays on Previous at the last page and Next at the first page"
+    },
+    {
+      "name": "Real independent-origin lookup",
+      "status": "passed",
+      "details": "CORS rejection displayed; official leaderboard standing retained; no earned checklist invented"
+    },
+    {
+      "name": "Lookup validation",
+      "status": "passed",
+      "details": "invalid short code stays in the labelled field"
+    },
+    {
+      "name": "390px first screen",
+      "status": "passed",
+      "details": "product, label, code field and action visible; no horizontal overflow"
+    },
+    {
+      "name": "Keyboard lookup path",
+      "status": "passed",
+      "details": "labelled input and visible focus on submit"
+    },
+    {
+      "name": "Mobile paging, search and real-code lookup",
+      "status": "passed",
+      "details": "390px page two, exact search and keyboard submission; independent CORS recovery remains explicit"
+    },
+    {
+      "name": "Board reflow",
+      "status": "passed",
+      "details": "320, 390, 760 and 1440 CSS pixels"
+    },
+    {
+      "name": "Method page",
+      "status": "passed",
+      "details": "sample size, errors, objective and limitations displayed"
+    },
+    {
+      "name": "Local assets and runtime",
+      "status": "passed",
+      "details": "no JavaScript page errors on live flows"
+    },
+    {
+      "name": "Fetched badge category filters",
+      "status": "passed",
+      "details": "Builder contains only code-lane badges, then all badges restored"
+    },
+    {
+      "name": "Real profile on API-allowed origin",
+      "status": "passed",
+      "details": "actual aura, tier, rank, movement, fetched checklist and recommendations; test-only static origin harness, not independent-host compatibility"
+    },
+    {
+      "name": "Allowed-origin profile mobile",
+      "status": "passed",
+      "details": "second real member looked up at 390px; no overflow"
+    },
+    {
+      "name": "30-second endpoint deduplication",
+      "status": "passed",
+      "details": "repeated member request uses the same observation"
+    },
+    {
+      "name": "Focus preserved during refresh rendering",
+      "status": "passed",
+      "details": "native requirements summary stays focused"
+    },
+    {
+      "name": "Simulated API outage after success",
+      "status": "passed",
+      "details": "prior stats and member sections retained with failure and observation times"
+    },
+    {
+      "name": "Unsupported-schema refresh",
+      "status": "passed",
+      "details": "validated observation retained; schema failure reported"
+    },
+    {
+      "name": "Simulated stale source",
+      "status": "passed",
+      "details": "two-hour-old source explicitly delayed, with original observation time"
+    },
+    {
+      "name": "429 Retry-After",
+      "status": "passed",
+      "details": "120-second origin pause prevents timer retries during backoff"
+    },
+    {
+      "name": "Origin-wide backoff",
+      "status": "passed",
+      "details": "profile requests also pause with the community API"
+    },
+    {
+      "name": "Simulated slow response",
+      "status": "passed",
+      "details": "12-second timeout reported while loaded member sections remain visible"
+    },
+    {
+      "name": "Missing source timestamp",
+      "status": "passed",
+      "details": "freshness is explicitly unverified, never promoted to a recent snapshot"
+    },
+    {
+      "name": "Simulated v3 active phase countdown",
+      "status": "passed",
+      "details": "human-readable countdown remains visible and updates at 390px; no active phase was claimed from the real unconfigured API"
+    },
+    {
+      "name": "Reduced motion",
+      "status": "passed",
+      "details": "no infinite animations"
+    },
+    {
+      "name": "Normal snapshot cadence",
+      "status": "passed",
+      "details": "20-minute source remains a dated recent observation under the 90-minute display rule"
+    },
+    {
+      "name": "Shared partial-state coverage at 390px",
+      "status": "passed",
+      "details": "open banner names leaderboard, badge catalog and activity; stats and phase observation times remain visible"
+    },
+    {
+      "name": "Visible retry and refresh cooldown",
+      "status": "passed",
+      "details": "scheduled UTC retry labels; repeated retry sends no request within 30 seconds"
+    },
+    {
+      "name": "Total community outage",
+      "status": "passed",
+      "details": "counts say Unavailable; profile recovery makes no unsupported CORS or healthy-section claim"
+    },
+    {
+      "name": "Blocked-profile background refresh",
+      "status": "passed",
+      "details": "leaderboard summary and error remain visible; submit stays enabled and focused during a pending poll"
+    },
+    {
+      "name": "Movement survives identical snapshot polls",
+      "status": "passed",
+      "details": "ranks swap on a new source snapshot; arrow persists after the next identical snapshot"
+    },
+    {
+      "name": "Shared visual and navigation fixes",
+      "status": "passed",
+      "details": "LED dots on all routes at 390/1440; explicit leaderboard hint; stronger input border; competing art removed"
+    }
+  ]
+}
